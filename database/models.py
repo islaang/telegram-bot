@@ -47,6 +47,7 @@ async def models_main():
         
         
         async with async_session() as session:
-            department = Department(name = 'IT')
+            department = Department(first_name = '', last_name = 'Sales', age = 5, salary = 999.00, email = 'AVIAsales@gmail.com', address = 'Russia', department_id = 5)
             session.add(department)
             await session.commit()
+
