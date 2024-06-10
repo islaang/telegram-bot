@@ -27,3 +27,12 @@ async def hello(message:Message):
 @router.message(F.text == 'Departments')
 async def departments(message:Message):
     await message.answer('Choose a department', reply_markup= await KB.departments_kb())
+
+# @router.message(F.text == 'Rabы')
+# async def rab(message:Message):
+#     await message.answer('Choose a rab', reply_markup= await KB.rab_kb())
+
+@router.callback_query(F.data.startswith('department_'))
+async def department(callback:CallbackQuery):
+    department_id = callback.data.split('_')[1]
+    await callback.message.answer('Люди работающие в этом отделе: ', reply_markup= await KB.rab_kb(department_id))
